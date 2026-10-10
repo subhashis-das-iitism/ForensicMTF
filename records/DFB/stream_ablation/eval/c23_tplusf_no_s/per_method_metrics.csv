@@ -1,0 +1,6 @@
+method,n,acc,auc
+real,140,0.9929,0.9953
+Deepfakes,140,1.0,1.0
+Face2Face,140,0.9857,0.9976
+FaceSwap,140,1.0,1.0
+NeuralTextures,140,0.9429,0.9837

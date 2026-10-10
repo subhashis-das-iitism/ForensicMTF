@@ -1,0 +1,3 @@
+[train] real=719 fake=2877 total=3596  -> /home/subhashis/Research_PhD/Contribution_1/TestPR1/TriForensics-main/records/DFB/index/ffpp_c23.json
+[val] real=140 fake=560 total=700  -> /home/subhashis/Research_PhD/Contribution_1/TestPR1/TriForensics-main/records/DFB/index/ffpp_c23.json
+[test] real=140 fake=560 total=700  -> /home/subhashis/Research_PhD/Contribution_1/TestPR1/TriForensics-main/records/DFB/index/ffpp_c23.json

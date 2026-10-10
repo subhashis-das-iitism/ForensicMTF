@@ -1,0 +1,3 @@
+method,n,acc,auc,mask_f1,mask_iou,mask_iou_n
+real,362,0.511,0.6223,,,
+DeepFakeDetection,3055,0.6786,0.6223,0.7502,0.619,3000

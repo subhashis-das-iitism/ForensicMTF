@@ -1,0 +1,2 @@
+dataset,auc,ap,eer,accuracy,f1,real_acc,fake_acc,threshold,n_real,n_fake
+dfb_celebdf_indomain,0.9839,0.9889,0.0505,0.95,0.9593,0.9474,0.9516,0.5442,38,62

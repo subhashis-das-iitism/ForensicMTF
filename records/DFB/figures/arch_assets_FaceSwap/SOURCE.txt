@@ -1,0 +1,6 @@
+FF++ c23
+fake : FaceSwap / 170_186  frames=/home/subhashis/Deepfakebench/datasets/rgb/FaceForensics++/manipulated_sequences/FaceSwap/c23/frames/170_186
+real : 170
+frame: 161.png   bbox=(18, 21, 214, 256)   T=32  face=112  img=224
+ckpt : /home/subhashis/Research_PhD/Contribution_1/TestPR1/TriForensics-main/records/DFB/models_ffpp_c23/best.pth
+p(fake)=0.9460

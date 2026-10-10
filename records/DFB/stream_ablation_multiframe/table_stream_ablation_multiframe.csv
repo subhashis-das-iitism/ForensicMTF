@@ -1,0 +1,3 @@
+variant,c23_auc,c23_accuracy
+Frequency only (multi-frame),0.6799,0.4786
+Spatial only (multi-frame),0.6586,0.6229

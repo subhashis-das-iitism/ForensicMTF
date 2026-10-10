@@ -1,0 +1,2 @@
+dataset,auc,ap,eer,accuracy,f1,real_acc,fake_acc,threshold,n_real,n_fake,id_acc,id_f1
+dfb_ffpp_frequency_only_multiframe,0.6799,0.8988,0.3839,0.4786,0.535,0.8929,0.375,0.6963,140,560,0.4243,0.4131

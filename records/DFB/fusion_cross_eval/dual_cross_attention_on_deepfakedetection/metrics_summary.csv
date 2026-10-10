@@ -1,0 +1,2 @@
+dataset,auc,ap,eer,accuracy,f1,real_acc,fake_acc,threshold,n_real,n_fake,mask_iou,mask_f1,id_acc,id_f1
+dfb_deepfakedetection,0.6111,0.9249,0.4278,0.6474,0.7713,0.4972,0.6651,0.356,362,3055,0.6142,0.747,0.0629,0.0359

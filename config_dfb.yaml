@@ -1,0 +1,143 @@
+project:
+  name: ForensicMTF-DFB
+  records_dir: records/DFB
+
+# dfb_root and friends default to this machine's dataset location, expressed relative
+# to the project root (resolve_path() joins any non-absolute path against
+# PROJECT_ROOT), and can still be overridden per-machine without editing this file:
+#   DFB_DATA_ROOT=/data/deepfakebench/rgb python3 main_dfb.py ...
+paths:
+  dfb_root: ${DFB_DATA_ROOT:-../../../../Deepfakebench/datasets/rgb}
+  celebdf_dfb_root: ${DFB_DATA_ROOT:-../../../../Deepfakebench/datasets/rgb}/Celeb-DF-v1
+  celebdf_v2_dfb_root: ${DFB_DATA_ROOT:-../../../../Deepfakebench/datasets/rgb}/Celeb-DF-v2
+  uadfv_root: ${DFB_DATA_ROOT:-../../../../Deepfakebench/datasets/rgb}/UADFV
+  dfdc_root: ${DFB_DATA_ROOT:-../../../../Deepfakebench/datasets/rgb}/DFDC
+
+workflow:
+  task: train
+
+dfb:
+  ffpp:
+    compressions: [c40]
+    fake_subsets: [Deepfakes, Face2Face, FaceSwap, NeuralTextures]
+    n_frames: 32
+    face_size: 112
+    img_size: 224
+  smoke:
+    train_pairs: 20
+    val_pairs: 5
+    test_pairs: 5
+    epochs: 2
+    batch_size: 2
+    accum_steps: 2
+    n_frames: 16
+
+train:
+  save_dir: records/DFB/models_{train_variant}
+  metrics_path: records/DFB/results/metrics_{train_variant}.csv
+  resume: null
+  init_model_path: null
+  pretrained: true
+  use_spatial: true
+  use_noise: true
+  use_temporal: true
+  fusion_mode: dual_cross_attention
+  s3_weight: 0.3
+  face_size: 112
+  batch_size: 4
+  num_workers: 4
+  accum_steps: 4
+  epochs: 50
+  lr: 0.0001
+  lr_warmup_steps: 300  # linear LR ramp over the first N training steps (stability, see records/DFB/logs c23 incident)
+  weight_decay: 0.03
+  early_stop: 8
+  use_amp: true
+  mem_fraction: 0.95
+  ema_decay: 0.999
+  alpha_real: 0.35
+  alpha_fake: 0.65
+  focal_gamma: 2.0
+  label_smoothing: 0.08
+  nt_boost: 1.25
+  feature_dropout_prob: 0.12
+  fused_mixup_alpha: 0.2
+  use_localization_head: true
+  use_identification_head: true
+  use_landmark_attention: true
+  mask_loss_weight: 0.3
+  id_loss_weight: 0.2
+  aux_loss_warmup_epochs: 2
+  metric_names: [real, Deepfakes, Face2Face, FaceSwap, NeuralTextures]
+  augmentations:
+    noise_prob: 0.15
+    noise_sigma: 0.015
+    blur_prob: 0.15
+    blur_kernel: 5
+    blur_sigma: 0.8
+    compression_prob: 0.20
+    compression_scale_min: 0.65
+    compression_scale_max: 0.85
+    compression_quant_levels: 32
+    lighting_prob: 0.12
+    brightness_delta: 0.12
+    contrast_delta: 0.12
+    rotate_crop_prob: 0.12
+    rotate_degrees: 3.0
+    crop_scale_min: 0.94
+
+evaluate:
+  common:
+    model_path: records/DFB/models_{train_variant}/best.pth
+    out_dir: records/DFB/eval/{dataset}_{train_variant}
+    batch_size: 4
+    num_workers: 4
+    n_frames: 32
+    face_size: 112
+    img_size: 224
+    s3_weight: 0.3  # matches train.s3_weight; justified over 0.7 by the sensitivity sweep in records/DFB/s3_sweep/
+    use_spatial: true
+    use_noise: true
+    use_temporal: true
+    fusion_mode: dual_cross_attention
+    use_localization_head: true
+    use_identification_head: true
+    use_landmark_attention: true
+  targets:
+    dfb_ffpp:
+      split: test
+    dfb_celebdf_cross_domain: {}
+
+# Run via: python3 main_dfb_ablation.py --config config_dfb.yaml
+# This is the ablation evidence LRCL never got before being removed. Each variant is
+# trained with a reduced epoch/patience budget (vs. the main run's 50/8) since this is a
+# relative comparison across 4 variants, not the headline number.
+ablation:
+  sweep:
+    epochs: 25
+    early_stop: 5
+  mlg_mtf:
+    - name: "Base (no localization/id/landmark)"
+      dataset_variant: ffpp_c40_mlgmtf_base
+      train:
+        use_localization_head: false
+        use_identification_head: false
+        use_landmark_attention: false
+    - name: "+ Landmark attention only"
+      dataset_variant: ffpp_c40_mlgmtf_landmark
+      train:
+        use_localization_head: false
+        use_identification_head: false
+        use_landmark_attention: true
+    - name: "+ Localization head"
+      dataset_variant: ffpp_c40_mlgmtf_localization
+      train:
+        use_localization_head: true
+        use_identification_head: false
+        use_landmark_attention: true
+    - name: "+ Identification head (full MLG-MTF)"
+      dataset_variant: ffpp_c40_mlgmtf_full
+      train:
+        use_localization_head: true
+        use_identification_head: true
+        use_landmark_attention: true

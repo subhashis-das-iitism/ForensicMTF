@@ -1,0 +1,2 @@
+dataset,auc,ap,eer,accuracy,f1,real_acc,fake_acc,threshold,n_real,n_fake,id_acc,id_f1
+dfb_faceshifter,0.8767,0.8864,0.1786,0.825,0.8205,0.85,0.8,0.1607,140,140,0.4929,0.1488

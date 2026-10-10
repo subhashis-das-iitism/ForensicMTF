@@ -1,0 +1,6 @@
+FF++ c23
+fake : Deepfakes / 128_896  frames=/home/subhashis/Deepfakebench/datasets/rgb/FaceForensics++/manipulated_sequences/Deepfakes/c23/frames/128_896
+real : 128
+frame: 355.png   bbox=(5, 18, 223, 256)   T=32  face=112  img=224
+ckpt : /home/subhashis/Research_PhD/Contribution_1/TestPR1/TriForensics-main/records/DFB/models_ffpp_c23/best.pth
+p(fake)=0.9340

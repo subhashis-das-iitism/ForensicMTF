@@ -1,0 +1,2 @@
+dataset,auc,ap,eer,accuracy,f1,real_acc,fake_acc,threshold,n_real,n_fake,mask_iou,id_acc,id_f1
+dfb_neuraltextures,0.732,0.7155,0.3143,0.6893,0.6836,0.7071,0.6714,0.2453,140,140,0.0071,0.4929,0.2312

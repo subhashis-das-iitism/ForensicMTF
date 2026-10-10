@@ -1,0 +1,5 @@
+Table: MLG-MTF ablation - mask localization + manipulation-method identification + landmark-guided attention
+
+Variant                              | FF++ AUC | FF++ ACC | FF++ F1 | Mask IoU | ID Acc | CelebDF AUC | CelebDF ACC | CelebDF F1
+-------------------------------------+----------+----------+---------+----------+--------+-------------+-------------+-----------
++ Identification head (full MLG-MTF) | 0.9800   | 0.9371   | 0.9595  | 0.8339   | 0.8929 | 0.8646      | 0.8600      | 0.8923    

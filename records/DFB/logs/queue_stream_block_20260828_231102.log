@@ -1,0 +1,5 @@
+[queue2] waiting for the fusion cross-domain eval to finish...
+[queue2] fusion cross-domain eval done. Fri Aug 28 23:27:11 IST 2026
+[queue2] T/F/S stream-block ablation (c23 + c40, existing headline checkpoints, no retraining)
+[queue2] stream-block ablation done. Fri Aug 28 23:40:53 IST 2026
+[queue2] ALL DONE Fri Aug 28 23:40:53 IST 2026

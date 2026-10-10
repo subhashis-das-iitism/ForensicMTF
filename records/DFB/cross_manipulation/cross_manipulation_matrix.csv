@@ -1,0 +1,5 @@
+train_method,Deepfakes,Face2Face,FaceSwap,NeuralTextures
+Deepfakes,0.9954,0.6661,0.6641,0.732
+Face2Face,0.8066,0.9907,0.6243,0.7973
+FaceSwap,0.8119,0.6819,0.997,0.5921
+NeuralTextures,0.8937,0.8694,0.6038,0.9495

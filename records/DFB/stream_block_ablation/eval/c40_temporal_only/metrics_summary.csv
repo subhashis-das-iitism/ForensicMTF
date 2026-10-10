@@ -1,0 +1,2 @@
+dataset,auc,ap,eer,accuracy,f1,real_acc,fake_acc,threshold,n_real,n_fake,mask_iou,mask_f1,id_acc,id_f1
+dfb_ffpp_temporal_only,0.9781,0.9944,0.0643,0.9357,0.9588,0.9429,0.9339,0.6856,140,560,0.0054,0.0054,0.9014,0.9009

@@ -1,0 +1,5 @@
+fusion_mode,target,auc,accuracy,f1,mask_iou
+addition,celebdfv2,0.8019,0.751,0.8,nan
+concatenation,celebdfv2,0.8203,0.7896,0.8409,nan
+attention,celebdfv2,0.7915,0.7587,0.8148,nan
+dual_cross_attention,celebdfv2,0.8253,0.7761,0.8226,nan

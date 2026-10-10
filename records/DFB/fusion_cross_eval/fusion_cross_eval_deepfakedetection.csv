@@ -1,0 +1,5 @@
+fusion_mode,target,auc,accuracy,f1,mask_iou
+addition,deepfakedetection,0.6187,0.5906,0.721,0.6175
+concatenation,deepfakedetection,0.6179,0.6005,0.7296,0.638
+attention,deepfakedetection,0.626,0.6599,0.7805,0.6261
+dual_cross_attention,deepfakedetection,0.6111,0.6474,0.7713,0.6142

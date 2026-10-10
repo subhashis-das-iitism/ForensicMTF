@@ -1,0 +1,6 @@
+FF++ c23
+fake : Face2Face / 288_321  frames=/home/subhashis/Deepfakebench/datasets/rgb/FaceForensics++/manipulated_sequences/Face2Face/c23/frames/288_321
+real : 288
+frame: 292.png   bbox=(21, 14, 215, 256)   T=32  face=112  img=224
+ckpt : /home/subhashis/Research_PhD/Contribution_1/TestPR1/TriForensics-main/records/DFB/models_ffpp_c23/best.pth
+p(fake)=0.9407

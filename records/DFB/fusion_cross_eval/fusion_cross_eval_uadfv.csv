@@ -1,0 +1,5 @@
+fusion_mode,target,auc,accuracy,f1,mask_iou
+addition,uadfv,0.9192,0.8776,0.8824,nan
+concatenation,uadfv,0.9342,0.8878,0.8952,nan
+attention,uadfv,0.9321,0.8776,0.8776,nan
+dual_cross_attention,uadfv,0.903,0.8571,0.8511,nan

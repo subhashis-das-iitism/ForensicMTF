@@ -1,0 +1,2 @@
+dataset,auc,ap,eer,accuracy,f1,real_acc,fake_acc,threshold,n_real,n_fake
+dfb_uadfv,0.925,0.9236,0.1633,0.8673,0.8738,0.8163,0.9184,0.7482,49,49

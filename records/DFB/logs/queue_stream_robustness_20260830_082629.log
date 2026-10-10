@@ -1,0 +1,4 @@
+[queue3] waiting for records/DFB/stream_ablation/eval/c23_temporal_only/metrics_summary.csv and records/DFB/stream_ablation/eval/c23_tplusf_no_s/metrics_summary.csv ...
+[queue3] both combos fully finished (train+eval). Sun Aug 30 10:55:36 IST 2026
+[queue3] robustness comparison: Temporal-only vs T+F(no S) vs Full model, c23 (batch_size=2, concurrent with ongoing ablation training)
+[queue3] ALL DONE Sun Aug 30 11:46:41 IST 2026

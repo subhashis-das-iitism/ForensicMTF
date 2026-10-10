@@ -1,0 +1,44 @@
+[queue] C23 robustness finished, starting freqmask ablation
+[queue] freqmask ablation restarted with fixed (Chebyshev) band geometry
+[queue] freqmask ablation restarted again with equal-area band boundaries (user caught mid>high area imbalance)
+[queue] freqmask ablation (equal-area bands) finished, starting robustness curve sweep (C40)
+[queue] robustness curve (C40) finished
+[queue] starting extended robustness (salt/pepper isolation + median-filter mitigation), C40
+[queue] extended robustness C40 finished, starting C23
+[queue] extended robustness C23 finished
+[queue] MLG-MTF ablation restarted from scratch with LandmarkAttention NaN-guard + amplification clamp fix (PID 267907)
+[queue] MLG-MTF ablation resumed from epoch_007.pth for localization variant (PID 6578), skipping already-complete base/landmark variants
+[queue] MLG-MTF ablation (resumed) finished, starting cross-manipulation sweep
+[queue] full MLG-MTF variant crashed at epoch 10/25 with CUDA driver fault (dmesg confirmed WSL crash-capture, not a NaN/code bug); queued resume from epoch_009.pth to run after cross-manipulation+fusion-ablation
+[queue] cross-manipulation finished, starting fusion-strategy ablation
+[queue] fusion ablation finished
+[queue] cross-manipulation + fusion-ablation queue finished, resuming crashed full MLG-MTF variant from epoch_009.pth (CUDA fault at epoch 10)
+[queue] full MLG-MTF variant (resumed) finished
+[queue] s3 sensitivity sweep started on FF++ val split (headline C40 checkpoint, s3 in [0.0,1.0] step 0.1, no retraining) -- for the fn:s3note justification
+[queue] s3 sensitivity sweep v2 started (FF++ val + CelebDF-v1 zero-shot, s3 in [0.0,1.0] step 0.1, no retraining) -- extending Table XVII with cross-domain per user request
+[s3fix-queue] starting full s3=0.3 re-evaluation queue
+[s3fix-queue] in-domain eval c40
+[s3fix-queue] cross-domain CelebDF-v1 c40
+[s3fix-queue] cross-eval celebdfv2 c40
+[s3fix-queue] cross-eval faceshifter c40
+[s3fix-queue] cross-eval deepfakedetection c40
+[s3fix-queue] cross-eval uadfv c40
+[s3fix-queue] cross-eval dfdc c40
+[s3fix-queue] robustness c40
+[s3fix-queue] in-domain eval c23
+[s3fix-queue] cross-domain CelebDF-v1 c23
+[s3fix-queue] cross-eval celebdfv2 c23
+[s3fix-queue] cross-eval faceshifter c23
+[s3fix-queue] cross-eval deepfakedetection c23
+[s3fix-queue] cross-eval uadfv c23
+[s3fix-queue] cross-eval dfdc c23
+[s3fix-queue] robustness c23
+[s3fix-queue] freqmask ablation (c40)
+[s3fix-queue] robustness curve (c40)
+[s3fix-queue] ALL DONE
+[queue] freqmask ablation rerun with fixed seed (torch.manual_seed(42) added - script previously had no seed, causing the low-freq band result to shift by more than s3 alone could explain)
+[queue] Celeb-DF-v1 in-domain (trained+tested) run started, matching CUTA table protocol, per user request
+[queue] Celeb-DF-v1 in-domain run finished, starting DeepFakeDetection in-domain run (per user request, for MVIM fair-comparison)
+[queue] DeepFakeDetection in-domain run finished
+[queue] celebdf+dfd in-domain queue finished, recomputing mask_f1 (new metric) via FF++ and DeepFakeDetection eval reruns
+[queue] mask_f1 recompute finished

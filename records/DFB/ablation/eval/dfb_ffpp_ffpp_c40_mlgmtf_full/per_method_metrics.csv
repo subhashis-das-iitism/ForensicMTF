@@ -1,0 +1,6 @@
+method,n,acc,auc,mask_iou,mask_iou_n
+real,140,0.9643,0.98,,
+Deepfakes,140,0.9857,0.9934,0.7398,140
+Face2Face,140,0.9571,0.9873,0.8892,140
+FaceSwap,140,0.9857,0.9939,0.8216,140
+NeuralTextures,140,0.7929,0.9455,0.8849,140

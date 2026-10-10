@@ -1,0 +1,5 @@
+[queue3] waiting for records/DFB/stream_ablation/models_c23_temporal_only/best.pth and records/DFB/stream_ablation/models_c23_tplusf_no_s/best.pth ...
+[queue3] both checkpoints ready. Sat Aug 29 20:43:49 IST 2026
+[queue3] robustness comparison: Temporal-only vs T+F(no S) vs Full model, c23 (batch_size=2, concurrent with ongoing ablation training)
+Terminated
+[queue3] ALL DONE Sat Aug 29 20:44:18 IST 2026

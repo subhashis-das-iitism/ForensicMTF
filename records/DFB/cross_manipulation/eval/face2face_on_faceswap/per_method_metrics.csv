@@ -1,0 +1,3 @@
+method,n,acc,auc,mask_iou,mask_iou_n
+real,140,0.6643,0.6243,,
+FaceSwap,140,0.5429,0.6243,0.5073,140

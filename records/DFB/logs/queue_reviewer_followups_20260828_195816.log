@@ -1,0 +1,5 @@
+[queue] waiting for the current dual_cross_attention fusion-ablation job to finish...
+[queue] fusion ablation done. Fri Aug 28 23:03:31 IST 2026
+[queue] fusion-mode cross-domain eval: addition/concatenation/attention/dual_cross_attention on celebdfv2,deepfakedetection,uadfv
+[queue] fusion cross-domain eval done. Fri Aug 28 23:27:07 IST 2026
+[queue] ALL DONE Fri Aug 28 23:27:07 IST 2026

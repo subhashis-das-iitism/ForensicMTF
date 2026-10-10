@@ -1,0 +1,6 @@
+FF++ c23
+fake : NeuralTextures / 169_227  frames=/home/subhashis/Deepfakebench/datasets/rgb/FaceForensics++/manipulated_sequences/NeuralTextures/c23/frames/169_227
+real : 169
+frame: 227.png   bbox=(41, 2, 217, 256)   T=32  face=112  img=224
+ckpt : /home/subhashis/Research_PhD/Contribution_1/TestPR1/TriForensics-main/records/DFB/models_ffpp_c23/best.pth
+p(fake)=0.9464

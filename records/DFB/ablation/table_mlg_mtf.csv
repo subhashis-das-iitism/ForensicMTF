@@ -1,0 +1,2 @@
+name,variant,celebdf_accuracy,celebdf_ap,celebdf_auc,celebdf_eer,celebdf_f1,celebdf_fake_acc,celebdf_n_fake,celebdf_n_real,celebdf_real_acc,celebdf_threshold,ffpp_accuracy,ffpp_ap,ffpp_auc,ffpp_eer,ffpp_f1,ffpp_fake_acc,ffpp_id_acc,ffpp_id_f1,ffpp_mask_iou,ffpp_n_fake,ffpp_n_real,ffpp_real_acc,ffpp_threshold
++ Identification head (full MLG-MTF),ffpp_c40_mlgmtf_full,0.86,0.8925,0.8646,0.202,0.8923,0.9355,62,38,0.7368,0.6996,0.9371,0.9947,0.98,0.0634,0.9595,0.9304,0.8929,0.8909,0.8339,560,140,0.9643,0.7132

@@ -1,0 +1,13 @@
+fusion_mode,target,auc,accuracy,f1,mask_iou
+addition,celebdfv2,0.8019,0.751,0.8,nan
+concatenation,celebdfv2,0.8203,0.7896,0.8409,nan
+attention,celebdfv2,0.7915,0.7587,0.8148,nan
+dual_cross_attention,celebdfv2,0.8253,0.7761,0.8226,nan
+addition,deepfakedetection,0.6187,0.5906,0.721,0.6175
+concatenation,deepfakedetection,0.6179,0.6005,0.7296,0.638
+attention,deepfakedetection,0.626,0.6599,0.7805,0.6261
+dual_cross_attention,deepfakedetection,0.6111,0.6474,0.7713,0.6142
+addition,uadfv,0.9192,0.8776,0.8824,nan
+concatenation,uadfv,0.9342,0.8878,0.8952,nan
+attention,uadfv,0.9321,0.8776,0.8776,nan
+dual_cross_attention,uadfv,0.903,0.8571,0.8511,nan

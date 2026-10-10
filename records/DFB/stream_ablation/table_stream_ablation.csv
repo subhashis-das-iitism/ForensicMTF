@@ -1,0 +1,7 @@
+variant,c23_auc,c23_accuracy
+Temporal only,0.9957,0.9786
+Frequency only,0.4986,0.7529
+Spatial only,,
+T+F (no S),0.9953,0.9843
+T+S (no F),,
+F+S (no T),,
