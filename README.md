@@ -1,5 +1,7 @@
 # ForensicMTF-DFB
 
+> **Status:** Submitted to *IEEE Transactions on Information Forensics and Security* (TIFS).
+
 DeepFakeBench-native deepfake detection: trains and evaluates directly against
 DeepFakeBench's pre-extracted frames/landmarks/masks (FaceForensics++ c23/c40,
 Celeb-DF-v1), with an optional path for building a cache from raw video instead.
@@ -12,17 +14,71 @@ forgery localization and manipulation-method identification heads.
 pip install -r requirements.txt
 ```
 
-## Dataset paths
+## Data: DeepfakeBench
 
-Set `paths.dfb_root` and `paths.celebdf_dfb_root` in `config_dfb.yaml` to point at your
-DeepFakeBench `rgb/` root (containing `FaceForensics++/` and `Celeb-DF-v1/`).
+This code reads the preprocessed datasets released by
+[DeepfakeBench](https://github.com/SCLBD/DeepfakeBench) (Yan et al., NeurIPS 2023 Datasets
+and Benchmarks). You don't need to install or run DeepfakeBench itself - only its data.
 
-All `paths.*` entries default to `${DFB_DATA_ROOT:-<checked-in default>}`, so on a new
-machine you can override every dataset root at once without editing the config:
+### 1. Download
+
+From the [Download Data](https://github.com/SCLBD/DeepfakeBench#2-download-data) section of
+the DeepfakeBench README, download the **Rgb-format Datasets** (preprocessed: 32 cropped
+face frames per video, with landmarks and, for FF++, forgery masks). Not the LMDB format.
+You need at least:
+
+| Dataset | Used for |
+| --- | --- |
+| `FaceForensics++` (c23 and/or c40) | training + in-domain evaluation (`main_dfb.py`) |
+| `Celeb-DF-v1` | cross-domain evaluation (`--task cross_domain_eval`), Celeb-DF in-domain |
+| `Celeb-DF-v2`, `UADFV`, `DFDC`, FF++ `FaceShifter` + `DeepFakeDetection` | optional extra cross-domain targets (`main_dfb_cross_eval.py`) |
+
+The original datasets are subject to their own licenses and access forms (e.g.
+[FaceForensics++](https://github.com/ondyari/FaceForensics),
+[Celeb-DF](https://github.com/yuezunli/celeb-deepfakeforensics)); please obtain permission
+from their authors as required.
+
+### 2. Arrange
+
+Unpack everything under one `rgb/` root. The loaders expect the DeepfakeBench layout:
+
+```
+rgb/
+├── FaceForensics++/
+│   ├── splits/{train,val,test}.json            # official FF++ splits (see note below)
+│   ├── original_sequences/
+│   │   ├── youtube/{c23,c40}/{frames,landmarks}/<video_id>/
+│   │   └── actors/{c23,c40}/{frames,landmarks}/  # only for DeepFakeDetection
+│   └── manipulated_sequences/
+│       └── {Deepfakes,Face2Face,FaceSwap,NeuralTextures,FaceShifter,DeepFakeDetection}/
+│           ├── {c23,c40}/{frames,landmarks}/<video_id>/
+│           └── c23/masks/<video_id>/           # masks are read from c23 for both compressions
+├── Celeb-DF-v1/
+│   ├── List_of_testing_videos.txt              # official Celeb-DF-v1 test list
+│   └── {Celeb-real,YouTube-real,Celeb-synthesis}/{frames,landmarks}/<video_id>/
+├── Celeb-DF-v2/                                # optional, same layout as v1
+├── UADFV/{real,fake}/{frames,landmarks}/       # optional
+└── DFDC/test/{frames,landmarks,metadata.json}  # optional
+```
+
+`splits/*.json` are the official FaceForensics++ train/val/test pair lists from
+[FaceForensics/dataset/splits](https://github.com/ondyari/FaceForensics/tree/master/dataset/splits);
+copy them in if your download doesn't include them. `List_of_testing_videos.txt` ships
+with Celeb-DF-v1.
+
+### 3. Point the code at it
+
+All `paths.*` entries in `config_dfb.yaml` default to `${DFB_DATA_ROOT:-<checked-in default>}`,
+so the easiest way is to set one environment variable to your `rgb/` root:
 
 ```bash
-DFB_DATA_ROOT=/path/to/deepfakebench/rgb python3 main_dfb.py --config config_dfb.yaml --task build_index
+export DFB_DATA_ROOT=/path/to/DeepfakeBench/datasets/rgb
+python3 main_dfb.py --config config_dfb.yaml --task build_index --smoke   # quick check
 ```
+
+Alternatively, edit `paths.dfb_root` (and `celebdf_dfb_root` etc.) in `config_dfb.yaml`.
+`build_index` writes the sample index to `records/DFB/index/`. If the dataset is found,
+it reports the number of real/fake clips per split.
 
 ## Usage
 
